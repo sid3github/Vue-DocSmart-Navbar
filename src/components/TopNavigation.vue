@@ -17,10 +17,22 @@
     </div>
     <div class="nav-icons">
       <div class="icons">
-        <img class="icon-img-1" src="@/assets/social-media.svg" alt="" />
+        <img
+          :src="socialMediaIconHover"
+          @mouseover="socialMediaHover = true"
+          @mouseleave="socialMediaHover = false"
+          class="icon-img-1"
+          alt=""
+        />
       </div>
       <div class="icons">
-        <img class="icon-img-2" src="@/assets/alert.svg" alt="" />
+        <img
+          :src="alertIconHover"
+          @mouseover="alertHover = true"
+          @mouseleave="alertHover = false"
+          class="icon-img-2"
+          alt=""
+        />
       </div>
       <div class="icons">
         <img class="icon-img-3" src="@/assets/support.svg" alt="" />
@@ -51,6 +63,32 @@
 <script>
 export default {
   name: "TopNavigation",
+  data() {
+    return {
+      socialMediaHover: false,
+      alertHover: false,
+      socialMediaSvg: require("@/assets/social-media.svg"),
+      socialMediaGif: require("@/assets/social-media.gif"),
+      alertSvg: require("@/assets/alert.svg"),
+      alertGif: require("@/assets/alert.gif"),
+    };
+  },
+  computed: {
+    socialMediaIconHover() {
+      if (this.socialMediaHover == true) {
+        return this.socialMediaGif;
+      } else {
+        return this.socialMediaSvg;
+      }
+    },
+    alertIconHover() {
+      if (this.alertHover == true) {
+        return this.alertGif;
+      } else {
+        return this.alertSvg;
+      }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -113,6 +151,12 @@ a {
   width: 30px;
   height: 30px;
   object-fit: cover;
+  transform: scale(1);
+  transition: all ease-in-out 0.3s;
+}
+
+.icons img:hover {
+  transform: scale(1.3);
 }
 
 .profile {
