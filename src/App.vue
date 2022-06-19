@@ -1,10 +1,16 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <TopNavigation />
+  </div>
 </template>
 
 <script>
+import TopNavigation from "@/components/TopNavigation.vue";
 export default {
   name: "App",
+  components: {
+    TopNavigation,
+  },
 };
 </script>
 
@@ -13,8 +19,5 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 </style>
